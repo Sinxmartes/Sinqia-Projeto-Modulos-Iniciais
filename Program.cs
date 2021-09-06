@@ -6,19 +6,29 @@ namespace Sinqia_Projeto_Modulo01
     {
         static void Main(string[] args)
         {
-
             const string MensagemBoasVinda = "Hello World";
+            const string MensagemSistema = "Bem vindo a simples calculadora";
 
             Console.WriteLine(MensagemBoasVinda);
+            Console.WriteLine(MensagemSistema);
 
-            //int x = 10;
-            //float z = 1.5f;
-            //double a = 1.5; //suporta o dobro de valor do float
-            //bool b = true;
-            //string y = "cadeia de caracteres";
-            //char c = 'c';
+            Menu();
+        }
 
-            Console.WriteLine("Bem vindo a simples calculadora");
+        static double LerValor1() {
+            Console.Write("Digite o primeiro valor: ");
+            double valor1 = Double.Parse(Console.ReadLine());
+            return valor1;
+        }
+
+        static double LerValor2() {            
+            double valor2;
+            Console.Write("Digite o segundo valor: ");
+            Double.TryParse(Console.ReadLine(), out valor2);
+            return valor2;
+        }
+
+        static void Menu() { 
             Console.WriteLine("Escolha a operação matemática abaixo:");
             Console.WriteLine("1 - Soma");
             Console.WriteLine("2 - Multiplicação");
@@ -27,22 +37,44 @@ namespace Sinqia_Projeto_Modulo01
             Console.WriteLine("5 - Resto");
             Console.WriteLine("6 - Sair da calculadora");
             Console.Write("Opção: ");
+            OpcaoSelecionada(Convert.ToInt32(Console.ReadLine()));
+        }
 
-            int opcao = Convert.ToInt32(Console.ReadLine());            
-           
-            /* switch (opcao)
+        static void OpcaoSelecionada(int opcao) {
+            switch (opcao)
             {
                 case 1:
+                    Console.WriteLine($"A soma dos dois valores é: {LerValor1() + LerValor2()}\n");
+                    Menu();
+                    break;
                 case 2:
+                    Console.WriteLine($"A multiplicação dos dois valores é: {LerValor1() * LerValor2()}\n");
+                    Menu();
+                    break;
                 case 3:
+                    Console.WriteLine($"A divisão dos dois valores é: {LerValor1() / LerValor2()}\n");
+                    Menu();
+                    break;
                 case 4:
+                    Console.WriteLine($"A subtração dos dois valores é: {LerValor1() - LerValor2()}\n");
+                    Menu();
+                    break;
                 case 5:
-                case 6:
-
+                    Console.WriteLine($"A resto da divisão dos dois valores é: {LerValor1() % LerValor2()}\n");
+                    Menu();
+                    break;                    
+                case 6:                    
+                    Environment.Exit(0);
+                    break;
                 default:
-            } */
+                    Console.WriteLine("Opção incorreta, tente novamente\n");
+                    Menu();
+                    break;
+            }
+        }
 
-            if (opcao == 6) {
+        static void OpcaoComIf() {
+            /* if (opcao == 6) {
                 Environment.Exit(0);
             } else if (opcao < 1 || opcao > 6) { //AND - E -> && //OR - OU -> || //NOT - NÃO -> !
                 Console.WriteLine("Opção incorreta, tente novamente mais tarde");
@@ -75,7 +107,7 @@ namespace Sinqia_Projeto_Modulo01
             else if (opcao == 5)
             {
                 Console.WriteLine($"A resto da divisão dos dois valores é: {valor1 % valor2}");
-            }
+            } */
         }
     }
 }
