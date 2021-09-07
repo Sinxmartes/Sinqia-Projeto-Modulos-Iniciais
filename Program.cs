@@ -7,12 +7,16 @@ namespace Sinqia_Projeto_Modulo01
         static void Main(string[] args)
         {
             const string MensagemBoasVinda = "Hello World";
-            const string MensagemSistema = "Bem vindo a simples calculadora";
+            //const string MensagemSistema = "Bem vindo a simples calculadora";
 
             Console.WriteLine(MensagemBoasVinda);
-            Console.WriteLine(MensagemSistema);
+            //Console.WriteLine(MensagemSistema);
 
-            Menu();
+            //Menu();
+
+            //EstruturaRepeticaoFor();
+            EstruturaRepeticaoWhile();
+            //EstruturaRepeticaoDoWhile();
         }
 
         static double LerValor1() {
@@ -109,5 +113,59 @@ namespace Sinqia_Projeto_Modulo01
                 Console.WriteLine($"A resto da divisão dos dois valores é: {valor1 % valor2}");
             } */
         }
+        
+        static void EstruturaRepeticaoFor() {
+            Console.Write("Digite um valor para ser calculado o fatorial do mesmo: ");
+            int fatorial;
+            Int32.TryParse(Console.ReadLine(), out fatorial);
+            int resultado = fatorial;
+            for(int i = (fatorial-1); i >= 1; i--) { //i++ == i=i+1 || i-- == i=i-1
+                resultado = resultado * i;
+            }
+            Console.WriteLine($"Resultado do fatorial é: {resultado}");
+        }
+
+        static void EstruturaRepeticaoWhile() {
+            Random random = new Random();
+            int vezes = random.Next(1, 101);
+            int descobrir = random.Next(1, 51);
+            Console.Write("Descubra o valor que estou pensando: ");
+            int numero = 0, i = 1;
+            Int32.TryParse(Console.ReadLine(), out numero);
+            while(numero != descobrir && i < vezes) {
+                Console.Write("Descubra o valor que estou pensando: ");
+                Int32.TryParse(Console.ReadLine(), out numero);
+                i++;
+            }
+
+            if (i == vezes && numero != descobrir) {
+                Console.WriteLine($"Você não descobriu o valor e tentou {i} vezes");
+            } else {
+                Console.WriteLine($"Você demorou {i} vezes para descobrir o valor");
+            }
+        }
+
+        static void EstruturaRepeticaoDoWhile() {           
+            do {
+                Console.WriteLine("\nDescubra a tecla que encerra o programa: ");                
+            } while(Console.ReadKey().Key != ConsoleKey.V);
+        }
+
+        static void EstruturaVetoresMatrizes() {           
+            
+            // [0, 1, 2, 3, 4] -> 5 posições
+            // [[0, 2, 4, 6, 8, 10],[1, 3, 5, 7, 9, 11]] -> 2x3 posições
+            
+            int[] ValoresPares = {0, 2, 4, 6};
+            int[,] ValoresPeI = {{0, 2, 4, 6}, {1, 3, 5, 7}};
+
+            int [] MatrizUni = new int[6];
+            int [] MatrizUni2 = new int[] {0, 2, 4, 6};
+
+
+            //foreach
+            
+        }
+
     }
 }
