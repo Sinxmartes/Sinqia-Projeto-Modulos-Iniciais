@@ -6,76 +6,26 @@ namespace Sinqia_Projeto_Modulo01
     {
         static void Main(string[] args)
         {
-            const string MensagemBoasVinda = "Hello World";
             //const string MensagemSistema = "Bem vindo a simples calculadora";
-
-            Console.WriteLine(MensagemBoasVinda);
             //Console.WriteLine(MensagemSistema);
 
-            //Menu();
+            //BoasVindas.MensagemBoasVindas();
+            //Menu menu = new Menu();
+            //menu.MenuCalc();
 
             //EstruturaRepeticaoFor();
-            EstruturaRepeticaoWhile();
+            //EstruturaRepeticaoWhile();
             //EstruturaRepeticaoDoWhile();
+
+            EstruturaVetoresMatrizes();
+
+
+            Calculadora calc = new Calculadora();
+            calc.NumberOne = 10;
+            Console.WriteLine(calc.NumberOne);
         }
 
-        static double LerValor1() {
-            Console.Write("Digite o primeiro valor: ");
-            double valor1 = Double.Parse(Console.ReadLine());
-            return valor1;
-        }
-
-        static double LerValor2() {            
-            double valor2;
-            Console.Write("Digite o segundo valor: ");
-            Double.TryParse(Console.ReadLine(), out valor2);
-            return valor2;
-        }
-
-        static void Menu() { 
-            Console.WriteLine("Escolha a operação matemática abaixo:");
-            Console.WriteLine("1 - Soma");
-            Console.WriteLine("2 - Multiplicação");
-            Console.WriteLine("3 - Divisão");
-            Console.WriteLine("4 - Subtração");
-            Console.WriteLine("5 - Resto");
-            Console.WriteLine("6 - Sair da calculadora");
-            Console.Write("Opção: ");
-            OpcaoSelecionada(Convert.ToInt32(Console.ReadLine()));
-        }
-
-        static void OpcaoSelecionada(int opcao) {
-            switch (opcao)
-            {
-                case 1:
-                    Console.WriteLine($"A soma dos dois valores é: {LerValor1() + LerValor2()}\n");
-                    Menu();
-                    break;
-                case 2:
-                    Console.WriteLine($"A multiplicação dos dois valores é: {LerValor1() * LerValor2()}\n");
-                    Menu();
-                    break;
-                case 3:
-                    Console.WriteLine($"A divisão dos dois valores é: {LerValor1() / LerValor2()}\n");
-                    Menu();
-                    break;
-                case 4:
-                    Console.WriteLine($"A subtração dos dois valores é: {LerValor1() - LerValor2()}\n");
-                    Menu();
-                    break;
-                case 5:
-                    Console.WriteLine($"A resto da divisão dos dois valores é: {LerValor1() % LerValor2()}\n");
-                    Menu();
-                    break;                    
-                case 6:                    
-                    Environment.Exit(0);
-                    break;
-                default:
-                    Console.WriteLine("Opção incorreta, tente novamente\n");
-                    Menu();
-                    break;
-            }
-        }
+        
 
         static void OpcaoComIf() {
             /* if (opcao == 6) {
@@ -114,17 +64,6 @@ namespace Sinqia_Projeto_Modulo01
             } */
         }
         
-        static void EstruturaRepeticaoFor() {
-            Console.Write("Digite um valor para ser calculado o fatorial do mesmo: ");
-            int fatorial;
-            Int32.TryParse(Console.ReadLine(), out fatorial);
-            int resultado = fatorial;
-            for(int i = (fatorial-1); i >= 1; i--) { //i++ == i=i+1 || i-- == i=i-1
-                resultado = resultado * i;
-            }
-            Console.WriteLine($"Resultado do fatorial é: {resultado}");
-        }
-
         static void EstruturaRepeticaoWhile() {
             Random random = new Random();
             int vezes = random.Next(1, 101);
@@ -156,16 +95,73 @@ namespace Sinqia_Projeto_Modulo01
             // [0, 1, 2, 3, 4] -> 5 posições
             // [[0, 2, 4, 6, 8, 10],[1, 3, 5, 7, 9, 11]] -> 2x3 posições
             
-            int[] ValoresPares = {0, 2, 4, 6};
-            int[,] ValoresPeI = {{0, 2, 4, 6}, {1, 3, 5, 7}};
+            //int[] ValoresPares = {0, 2, 4, 6};
+            //int[,] ValoresPeI = {{0, 2, 4, 6}, {1, 3, 5, 7}};
 
-            int [] MatrizUni = new int[6];
-            int [] MatrizUni2 = new int[] {0, 2, 4, 6};
+            //int[] MatrizUni = new int[6]; //{1, 2, 3, 4, 5, 6}
+            //int[] MatrizUni2 = new int[] {0, 2, 4, 6};
 
+            //int[,] MatrizBi = new int[2,3];
 
-            //foreach
+            /* int [] ValoresPares = new int[10]; */
+
+            /* 
+                ValoresPares[0] = 2;
+                ValoresPares[1] = 4; 
+                ValoresPares[2] = 6;
+                ValoresPares[3] = 8;
+                ValoresPares[4] = 10;
+                ValoresPares[5] = 12;
+                ValoresPares[6] = 14;
+                ValoresPares[7] = 16;
+                ValoresPares[8] = 18;
+                ValoresPares[9] = 20; 
+            */
+
+            /* int par = 0; */
+                      
+            /* Usando While
+            int i = 0;
             
-        }
+            while(i < ValoresPares.Length) {
+                par += 2;
+                ValoresPares[i] = par;
+                i++;
+            } */
 
+            /* Usando For
+            for(int i = 0; i < ValoresPares.Length; i++) {
+                par += 2;
+                ValoresPares[i] = par;
+            } */
+
+            //foreach      
+            /* foreach(int elemento in ValoresPares) { //for each -> PARA CADA
+                Console.WriteLine(elemento);
+            } */
+
+            string [,] AlunosLC = new string[6,2]; // 6 -> linhas ; 3 -> colunas
+
+            
+            /* Console.WriteLine(AlunosLC.Length); // mostra o tamanho de elementos no meu array(en) === matriz(pt) ou vector(en) === vetor(pt)
+            Console.WriteLine(AlunosLC.Rank); // mostra a quantidade de dimensões
+            Console.WriteLine(AlunosLC.GetUpperBound(0); // mostra a quantidade de elementos - 1 em uma determinada dimensão */
+               
+            for(int i = 0; i <= AlunosLC.GetUpperBound(0); i++) {
+                for(int j = 0; j <= AlunosLC.GetUpperBound(1); j++) {
+                    if(j == 0) {
+                        Console.WriteLine("Digite o nome do aluno: ");
+                        AlunosLC[i, j] = Console.ReadLine();                
+                    } else {
+                        Console.WriteLine("Digite a idade do aluno: ");
+                        AlunosLC[i, j] = Console.ReadLine();               
+                    }
+                }
+            }
+                        
+            foreach(string e in AlunosLC) { 
+                Console.WriteLine(e);
+            }
+        }
     }
 }
