@@ -4,25 +4,28 @@ namespace Sinqia_Projeto_Modulo01
 {
     class Program
     {
+
+        //camelCase -> Variáveis
+        //PascalCase -> Métodos e Classes
+
         static void Main(string[] args)
-        {
+        {            
             //const string MensagemSistema = "Bem vindo a simples calculadora";
             //Console.WriteLine(MensagemSistema);
 
             //BoasVindas.MensagemBoasVindas();
-            //Menu menu = new Menu();
-            //menu.MenuCalc();
+            Menu menu = new Menu();
+            menu.MenuCalc();
 
             //EstruturaRepeticaoFor();
             //EstruturaRepeticaoWhile();
             //EstruturaRepeticaoDoWhile();
 
-            EstruturaVetoresMatrizes();
+            //EstruturaVetoresMatrizes();
 
 
-            Calculadora calc = new Calculadora();
-            calc.NumberOne = 10;
-            Console.WriteLine(calc.NumberOne);
+            //Calculadora calc = new Calculadora();
+            //Console.WriteLine(calc.NumberOne);
         }
 
         

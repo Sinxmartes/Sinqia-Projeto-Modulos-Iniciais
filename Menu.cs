@@ -25,6 +25,6 @@ namespace Sinqia_Projeto_Modulo01
             Console.WriteLine("3 - Visualizar dados da Pessoa Cadastrada");
             Console.WriteLine("0 - Sair do programa");
             Console.Write("Opção: ");
-        }
+        }   
     }
 }

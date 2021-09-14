@@ -4,20 +4,27 @@ namespace Sinqia_Projeto_Modulo01
 {
     class Pessoa
     {
-        double altura;
-        double peso;
-        int calcado;
-        string nome;
-        int diaNascimento;
-        int mesNascimento;
-        int anoNascimento;
-
+        private string nome;
+        private int diaNascimento;
+        private int mesNascimento;
+        private int anoNascimento;
+        
         public int idade() {
             return DateTime.Now.Year - anoNascimento;
         }
 
-        public void novoPeso(int qtdePerdeu) {
-            peso = peso - qtdePerdeu;
+        protected int AnoNascimento {
+            get => anoNascimento;
+            set {
+                anoNascimento = value;
+            }
+        }
+
+        public string Nome {
+            get => nome;
+            protected set {
+                nome = value;
+            }
         }
     }
 }
