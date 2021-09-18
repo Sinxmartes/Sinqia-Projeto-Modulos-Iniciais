@@ -1,4 +1,8 @@
-﻿using System;
+﻿using System.Reflection;
+using System.Globalization;
+using System.Runtime.Serialization.Json;
+using System.ComponentModel;
+using System;
 
 namespace Sinqia_Projeto_Modulo01
 {
@@ -9,13 +13,13 @@ namespace Sinqia_Projeto_Modulo01
         //PascalCase -> Métodos e Classes
 
         static void Main(string[] args)
-        {            
+        {
             //const string MensagemSistema = "Bem vindo a simples calculadora";
             //Console.WriteLine(MensagemSistema);
 
             //BoasVindas.MensagemBoasVindas();
-            Menu menu = new Menu();
-            menu.MenuCalc();
+            // Menu menu = new Menu();
+            // menu.MenuCalc();
 
             //EstruturaRepeticaoFor();
             //EstruturaRepeticaoWhile();
@@ -26,11 +30,18 @@ namespace Sinqia_Projeto_Modulo01
 
             //Calculadora calc = new Calculadora();
             //Console.WriteLine(calc.NumberOne);
+            
+            //Tópicos polimorfismo + Interface
+            Polimorfismo polimorfismo = new Polimorfismo();
+            polimorfismo.ExecutarExemplos();
+
+
         }
 
-        
 
-        static void OpcaoComIf() {
+
+        static void OpcaoComIf()
+        {
             /* if (opcao == 6) {
                 Environment.Exit(0);
             } else if (opcao < 1 || opcao > 6) { //AND - E -> && //OR - OU -> || //NOT - NÃO -> !
@@ -66,38 +77,46 @@ namespace Sinqia_Projeto_Modulo01
                 Console.WriteLine($"A resto da divisão dos dois valores é: {valor1 % valor2}");
             } */
         }
-        
-        static void EstruturaRepeticaoWhile() {
+
+        static void EstruturaRepeticaoWhile()
+        {
             Random random = new Random();
             int vezes = random.Next(1, 101);
             int descobrir = random.Next(1, 51);
             Console.Write("Descubra o valor que estou pensando: ");
             int numero = 0, i = 1;
             Int32.TryParse(Console.ReadLine(), out numero);
-            while(numero != descobrir && i < vezes) {
+            while (numero != descobrir && i < vezes)
+            {
                 Console.Write("Descubra o valor que estou pensando: ");
                 Int32.TryParse(Console.ReadLine(), out numero);
                 i++;
             }
 
-            if (i == vezes && numero != descobrir) {
+            if (i == vezes && numero != descobrir)
+            {
                 Console.WriteLine($"Você não descobriu o valor e tentou {i} vezes");
-            } else {
+            }
+            else
+            {
                 Console.WriteLine($"Você demorou {i} vezes para descobrir o valor");
             }
         }
 
-        static void EstruturaRepeticaoDoWhile() {           
-            do {
-                Console.WriteLine("\nDescubra a tecla que encerra o programa: ");                
-            } while(Console.ReadKey().Key != ConsoleKey.V);
+        static void EstruturaRepeticaoDoWhile()
+        {
+            do
+            {
+                Console.WriteLine("\nDescubra a tecla que encerra o programa: ");
+            } while (Console.ReadKey().Key != ConsoleKey.V);
         }
 
-        static void EstruturaVetoresMatrizes() {           
-            
+        static void EstruturaVetoresMatrizes()
+        {
+
             // [0, 1, 2, 3, 4] -> 5 posições
             // [[0, 2, 4, 6, 8, 10],[1, 3, 5, 7, 9, 11]] -> 2x3 posições
-            
+
             //int[] ValoresPares = {0, 2, 4, 6};
             //int[,] ValoresPeI = {{0, 2, 4, 6}, {1, 3, 5, 7}};
 
@@ -122,7 +141,7 @@ namespace Sinqia_Projeto_Modulo01
             */
 
             /* int par = 0; */
-                      
+
             /* Usando While
             int i = 0;
             
@@ -143,28 +162,42 @@ namespace Sinqia_Projeto_Modulo01
                 Console.WriteLine(elemento);
             } */
 
-            string [,] AlunosLC = new string[6,2]; // 6 -> linhas ; 3 -> colunas
+            string[,] AlunosLC = new string[6, 2]; // 6 -> linhas ; 3 -> colunas
 
-            
+
             /* Console.WriteLine(AlunosLC.Length); // mostra o tamanho de elementos no meu array(en) === matriz(pt) ou vector(en) === vetor(pt)
             Console.WriteLine(AlunosLC.Rank); // mostra a quantidade de dimensões
             Console.WriteLine(AlunosLC.GetUpperBound(0); // mostra a quantidade de elementos - 1 em uma determinada dimensão */
-               
-            for(int i = 0; i <= AlunosLC.GetUpperBound(0); i++) {
-                for(int j = 0; j <= AlunosLC.GetUpperBound(1); j++) {
-                    if(j == 0) {
+
+            for (int i = 0; i <= AlunosLC.GetUpperBound(0); i++)
+            {
+                for (int j = 0; j <= AlunosLC.GetUpperBound(1); j++)
+                {
+                    if (j == 0)
+                    {
                         Console.WriteLine("Digite o nome do aluno: ");
-                        AlunosLC[i, j] = Console.ReadLine();                
-                    } else {
+                        AlunosLC[i, j] = Console.ReadLine();
+                    }
+                    else
+                    {
                         Console.WriteLine("Digite a idade do aluno: ");
-                        AlunosLC[i, j] = Console.ReadLine();               
+                        AlunosLC[i, j] = Console.ReadLine();
                     }
                 }
             }
-                        
-            foreach(string e in AlunosLC) { 
+
+            foreach (string e in AlunosLC)
+            {
                 Console.WriteLine(e);
             }
         }
+
+     
+        void Polimorfismo()
+        {
+           
+        }
+
+        
     }
 }

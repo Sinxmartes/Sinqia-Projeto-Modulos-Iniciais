@@ -2,7 +2,7 @@ using System;
 
 namespace Sinqia_Projeto_Modulo01
 {
-    class Menu {
+     class Menu {
         public void MenuCalc() { 
             Calculadora calc = new Calculadora();
             Console.WriteLine("Escolha a operação matemática abaixo:");
