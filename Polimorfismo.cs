@@ -8,6 +8,11 @@ namespace Sinqia_Projeto_Modulo01
 {
     class Polimorfismo
     {
+        List<ILoja> lojas;
+
+        public Polimorfismo(List<ILoja> _lojas) {
+            lojas = _lojas;
+        }
 
         public void ExecutarExemplos()
         {
@@ -29,9 +34,7 @@ namespace Sinqia_Projeto_Modulo01
             professor.Responsabilidade();
 
             //Exemplo com polimorfismo
-            // Definimos uma unica variavel, que dependendo do contexto (objeto que foi instanciado), pode ter um comportamento ou outro
             IAcademico pessoa = new Aluno();
-
 
             pessoa.Responsabilidade();
 
@@ -72,6 +75,7 @@ namespace Sinqia_Projeto_Modulo01
                                          , new LojaDepartamento("Renner")
                                          , new LojaDepartamento("CeA")
                                         };
+
             foreach (ILoja loja in lojas)
             {
                 Console.WriteLine(loja.Nome);
@@ -79,7 +83,136 @@ namespace Sinqia_Projeto_Modulo01
                 loja.Vender();
             }
             Console.WriteLine("Exemplo das Lojas - Fim \n");
+        }
 
+        public void SelectOption(int option) {            
+            Menu menu = new Menu();
+
+            switch (option)
+            {
+                case 0:
+                    menu.MenuGeral();
+                    break;
+                case 1:
+                    ListarLojasCadastradas();
+                    menu.MenuShopping(lojas);
+                    break;
+                case 2:
+                    
+                    menu.MenuShopping(lojas);
+                    break;
+                case 3:
+                    CadastrarLojaDepartamento();
+                    menu.MenuShopping(lojas);
+                    break;
+                case 4:
+                    CadastrarFastFood();
+                    menu.MenuShopping(lojas);
+                    break;
+                case 5:
+                    RemoverLojaOuFastFood();
+                    menu.MenuShopping(lojas);
+                    break;
+                default:
+                    Console.WriteLine("Opção incorreta, tente novamente\n");
+                    menu.MenuShopping(lojas);
+                    break;
+            }
+        }
+
+        void CadastrarLojaDepartamento()
+        {           
+            /*Tipos de Collections:
+            * - List<>
+            * - Dictionary<Tkey, TValue>
+            */
+
+            string nomeLoja = "";
+            bool novamente = false;
+
+            do {
+                Console.Write("Digite o nome da loja de departamento que deseja cadastrar: ");
+                nomeLoja = Console.ReadLine();
+
+                lojas.Add(new LojaDepartamento(nomeLoja));
+                
+                Console.Write("\nDeseja cadastrar outra loja? Sim ou não (sem acento): ");
+                string simNao = Console.ReadLine().ToUpper();
+                switch (simNao) {
+                    case "SIM":
+                        novamente = true;
+                        break;
+                    case "NAO": 
+                        novamente = false;
+                        break;
+                    default:
+                        Console.WriteLine("Opção Invalida, não haverá novo cadastro");
+                        novamente = false;
+                        break;
+                }
+
+            } while(novamente);
+        }
+
+        void CadastrarFastFood()
+        {           
+            /*Tipos de Collections:
+            * - List<>
+            * - Dictionary<Tkey, TValue>
+            */
+
+            string nomeLoja = "";
+            double aluguelLoja;
+            bool novamente = false;
+
+            do {
+                Console.Write("Digite o nome do FastFood que deseja cadastrar: ");
+                nomeLoja = Console.ReadLine();
+                Console.Write("Digite o valor do aluguel do FastFood: ");
+                aluguelLoja = Convert.ToDouble(Console.ReadLine());
+                lojas.Add(new FastFood(nomeLoja, aluguelLoja));
+                
+                Console.Write("\nDeseja cadastrar outro FastFood? Sim ou não (sem acento): ");
+                string simNao = Console.ReadLine().ToUpper();
+                switch (simNao) {
+                    case "SIM":
+                        novamente = true;
+                        break;
+                    case "NAO": 
+                        novamente = false;
+                        break;
+                    default:
+                        Console.WriteLine("Opção Invalida, não haverá novo cadastro");
+                        novamente = false;
+                        break;
+                }
+
+            } while(novamente);
+        }
+
+        void RemoverLojaOuFastFood() {
+            string nomeLoja;
+            Console.Write("Digite o nome da Loja de Departamento ou FastFood que deseja remover: ");
+            nomeLoja = Console.ReadLine();
+
+            int indexLoja = lojas.FindIndex(loja => loja.Nome == nomeLoja);
+
+            if(indexLoja == -1) {
+                Console.WriteLine("Loja não encontrada, tente novamente");
+                RemoverLojaOuFastFood();
+            } else {
+                lojas.RemoveAt(indexLoja);
+                Console.WriteLine($"Foi removido a loja {nomeLoja} com sucesso");
+            }            
+        }
+
+        void ListarLojasCadastradas()
+        {
+            Console.WriteLine("Estas são as lojas cadastradas: ");
+            foreach (ILoja loja in lojas)
+            {
+                Console.WriteLine($"Loja: {loja.Nome} - Aluguel: {loja.Aluguel}");
+            }
         }
     }
 }

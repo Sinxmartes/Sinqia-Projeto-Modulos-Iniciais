@@ -17,9 +17,9 @@ namespace Sinqia_Projeto_Modulo01
             //const string MensagemSistema = "Bem vindo a simples calculadora";
             //Console.WriteLine(MensagemSistema);
 
-            //BoasVindas.MensagemBoasVindas();
-            // Menu menu = new Menu();
-            // menu.MenuCalc();
+            BoasVindas.MensagemBoasVindas();
+            Menu menu = new Menu();
+            menu.MenuGeral();
 
             //EstruturaRepeticaoFor();
             //EstruturaRepeticaoWhile();
@@ -32,8 +32,8 @@ namespace Sinqia_Projeto_Modulo01
             //Console.WriteLine(calc.NumberOne);
             
             //Tópicos polimorfismo + Interface
-            Polimorfismo polimorfismo = new Polimorfismo();
-            polimorfismo.ExecutarExemplos();
+            //Polimorfismo polimorfismo = new Polimorfismo();
+            //polimorfismo.ExecutarExemplos();
 
 
         }

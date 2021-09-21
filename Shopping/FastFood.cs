@@ -39,11 +39,11 @@ namespace Sinqia_Projeto_Modulo01
              PrepararPedido();
              Console.WriteLine($"{Nome} - Venda concluida com sucesso");
          }
-         public void PrepararPedido()
+         public virtual void PrepararPedido()
          {
              Console.WriteLine("Hamburguer na chapa");
              Console.WriteLine("Refrigerante no copo");
-             Console.WriteLine("Pedido embalado");
+             Console.WriteLine("Batatas fritando");
          }
     }
 }
